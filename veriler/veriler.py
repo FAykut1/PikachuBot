@@ -52,11 +52,12 @@ def xp_getir(user):
     if os.path.isfile("./veriler/kullanicilar.json"):
         with open("./veriler/kullanicilar.json", 'r') as fp:
             data = json.load(fp)
-
-        return data[userID]['xp']
-
+        try:
+            return data[userID]['xp']
+        except KeyError:
+            return 0
     else:
-        return None
+        return 0
 
 
 def level_getir(user):
@@ -64,8 +65,9 @@ def level_getir(user):
     if os.path.isfile("./veriler/kullanicilar.json"):
         with open("./veriler/kullanicilar.json", 'r') as fp:
             data = json.load(fp)
-
-        return data[userID]['level']
-
+        try:
+            return data[userID]['level']
+        except KeyError:
+            return 0
     else:
-        return None
+        return 0
